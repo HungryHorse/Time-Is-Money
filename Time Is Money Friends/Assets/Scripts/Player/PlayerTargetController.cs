@@ -7,18 +7,20 @@ public class PlayerTargetController : MonoBehaviour
     private const float BaseRotation = 45f;
 
     [SerializeField]
-    private float rotationSpeed;
-    private float RotationSpeed => rotationSpeed;
-
-    [SerializeField]
     private Transform playerTransform;
     private Transform PlayerTransform => playerTransform;
+
+    [SerializeField]
+    private float distanceFromPlayer;
+    private float DistanceFromPlayer => distanceFromPlayer;
 
     private Camera MouseCamera { get; set; }
 
     private Vector3 mousePos;
     private float angle;
     private Vector3 targetPos;
+    private Vector2 mouseWorldPos;
+    private Vector2 playerWorldPos;
 
     private void Start()
     {
@@ -29,7 +31,14 @@ public class PlayerTargetController : MonoBehaviour
     void Update()
     {
         mousePos = Input.mousePosition;
-        targetPos = MouseCamera.WorldToScreenPoint(transform.position);
+        targetPos = MouseCamera.WorldToScreenPoint(PlayerTransform.position);
+        mouseWorldPos = MouseCamera.ScreenToWorldPoint(mousePos);
+        playerWorldPos = PlayerTransform.position;
+
+        float distanceFromMouse = Vector2.Distance(mouseWorldPos, PlayerTransform.position);
+        float targetDistance = Mathf.Min(DistanceFromPlayer, distanceFromMouse);
+        transform.position = playerWorldPos + ((mouseWorldPos - playerWorldPos).normalized * targetDistance);
+
         mousePos.x -= targetPos.x;
         mousePos.y -= targetPos.y;
         angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
