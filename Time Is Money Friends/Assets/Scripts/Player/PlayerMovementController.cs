@@ -10,6 +10,10 @@ namespace TIM.Player
         private float basePlayerSpeed = 5f;
         private float BasePlayerSpeed => basePlayerSpeed;
 
+        [SerializeField]
+        private Animator animator;
+        private Animator Animator => animator;
+
         public float PlayerSpeedMultiplier { get; set; } = 1;
 
         private float PlayerSpeed { get => BasePlayerSpeed * PlayerSpeedMultiplier; }
@@ -23,6 +27,8 @@ namespace TIM.Player
         {
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
+
+            Animator.SetBool("isMoving", Mathf.Abs(horizontalInput) >= 0.1f || Mathf.Abs(verticalInput) >= 0.1f);
 
             moveVector = Vector2.ClampMagnitude(((Vector2.right * horizontalInput) + (Vector2.up * verticalInput)), 1);
 

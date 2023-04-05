@@ -251,3 +251,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basePlayerSpeed: 5
+  animator: {fileID: 4321954817511743769}
