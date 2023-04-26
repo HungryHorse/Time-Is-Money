@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cab8a485e8cc8b46afe63d66bca22e6, type: 3}
+  m_Name: EarthNeedle
+  m_EditorClassIdentifier: 
+  abilityName: Earth Needle
+  abilityImage: {fileID: 1946809145, guid: 2566b07bfce2ff84d8a86649caa78466, type: 3}
+  attribute:
+    possibleStates: 3
+    producesHeat: 0
+    producesCold: 0
+  slot: 0
+  damage: 5

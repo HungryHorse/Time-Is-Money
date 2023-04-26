@@ -1,7 +1,9 @@
 {
     "name": "TIM",
     "rootNamespace": "TIM",
-    "references": [],
+    "references": [
+        "GUID:60340140f8d6be3419c714b3e62295d4"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
