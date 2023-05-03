@@ -14,8 +14,8 @@ namespace TIM.Core.Abilities
         public string AbilityName => abilityName;
 
         [SerializeField]
-        private GameObject abilityPrefab;
-        public GameObject AbilityPrefab => abilityPrefab;
+        private AbstractAbility abilityPrefab;
+        public AbstractAbility AbilityPrefab => abilityPrefab;
 
         [SerializeField]
         private Sprite abilityImage;

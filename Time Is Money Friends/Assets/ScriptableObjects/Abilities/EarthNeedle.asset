@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: EarthNeedle
   m_EditorClassIdentifier: 
   abilityName: Earth Needle
+  abilityPrefab: {fileID: 2621951630175426530, guid: f6413afe3c71cd04283f0b90422bbba7, type: 3}
   abilityImage: {fileID: 1946809145, guid: 2566b07bfce2ff84d8a86649caa78466, type: 3}
   attribute:
     possibleStates: 3
     producesHeat: 0
     producesCold: 0
+  abilityType: 0
+  speed: 5
   slot: 0
   damage: 5

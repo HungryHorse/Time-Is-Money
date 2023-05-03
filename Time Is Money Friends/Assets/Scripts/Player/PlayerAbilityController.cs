@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TIM.Core;
 using TIM.Core.Abilities;
 using TIM.Core.UI;
 using UnityEngine;
@@ -12,16 +13,34 @@ namespace TIM.Player
         private AbilityScriptableObject primaryAbility;
         private AbilityScriptableObject PrimaryAbility => primaryAbility;
 
-        private void Awake()
+        [SerializeField]
+        private AbilityScriptableObject qAbility;
+        private AbilityScriptableObject QAbility => qAbility;
+
+        [SerializeField]
+        private AbilityScriptableObject eAbility;
+        private AbilityScriptableObject EAbility => eAbility;
+
+        private void Start()
         {
-            UIController.Instance.AbilityPanel.UpdateImage(PrimaryAbility.AbilityImage, Slot.Primary);
+            UIController.Instance.AbilityPanel.UpdateImage(PrimaryAbility?.AbilityImage, Slot.Primary);
+            UIController.Instance.AbilityPanel.UpdateImage(QAbility?.AbilityImage, Slot.Q);
+            UIController.Instance.AbilityPanel.UpdateImage(EAbility?.AbilityImage, Slot.E);
         }
 
         private void Update()
         {
-            if (Input.GetButtonDown("Fire"))
+            if (Input.GetButtonDown("Fire1"))
             {
                 UseAbility(PrimaryAbility);
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                UseAbility(QAbility);
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                UseAbility(EAbility);
             }
         }
 
@@ -45,7 +64,8 @@ namespace TIM.Player
 
         private void FireProjectile(AbilityScriptableObject ability)
         {
-            GameObject projectile = Instantiate(ability.AbilityPrefab, transform.position, Quaternion.identity);
+            ProjectileAbility projectile = Instantiate((ProjectileAbility)ability.AbilityPrefab, transform.position, transform.rotation);
+            projectile.Init(ability);
         }
     }
 }
